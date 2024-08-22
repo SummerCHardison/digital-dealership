@@ -1,6 +1,6 @@
 // This is just starting code and is made to be changed
 import React from 'react';
-import UserProfile from '../components/UserProfile/UserProfile';
+import UserProfile from '../../components/UserProfile/UserProfile';
 
 const ProfilePage = ({ user, bookings }) => {
   return (
