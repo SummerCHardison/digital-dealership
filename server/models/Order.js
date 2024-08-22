@@ -3,18 +3,27 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const orderSchema = new Schema({
-  purchaseDate: {
+  startRental: {
     type: Date,
     default: Date.now
   },
-  products: [
+  endRental: {
+    type: Date,
+    default: () => Date.now () + 3*24*60*60*1000
+  },
+  cars: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Product'
+      ref: 'car'
     }
-  ]
+  ],
+  totalPrice: Number,
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'user'
+  }
 });
 
-const Order = mongoose.model('Order', orderSchema);
+const Order = mongoose.model('order', orderSchema);
 
 module.exports = Order;

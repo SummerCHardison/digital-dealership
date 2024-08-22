@@ -1,11 +1,20 @@
-// /models/User.js
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
-const userSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
+const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
 });
 
 // Hash the password before saving
@@ -20,4 +29,5 @@ userSchema.methods.isCorrectPassword = function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-module.exports = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
+module.exports = User;

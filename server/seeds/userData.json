@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Jane Doe",
+        "email": "janedoe@email.com",
+        "password": "jane123"
+    },
+    {
+        "name": "John Smith",
+        "email": "john@smith.org",
+        "password": "genericpassword456"
+    },
+    {
+        "name": "Ashley Roberts",
+        "email": "ashleyar@email.com",
+        "password": "ashley789roberts"
+    }
+]
