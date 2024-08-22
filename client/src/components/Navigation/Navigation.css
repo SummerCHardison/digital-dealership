@@ -1,0 +1,29 @@
+/* This is just starting code and is made to be changed */
+.navigation {
+    background-color: #333;
+    padding: 10px;
+  }
+  
+  .navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .navigation li {
+    display: inline;
+  }
+  
+  .navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-weight: bold;
+  }
+  
+  .navigation a:hover {
+    background-color: #555;
+  }
+  
