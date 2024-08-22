@@ -1,0 +1,27 @@
+/* This is just starting code and is made to be changed */
+.error-page {
+    text-align: center;
+    padding: 50px;
+    color: #333;
+  }
+  
+  .error-page h1 {
+    font-size: 6rem;
+    margin-bottom: 20px;
+  }
+  
+  .error-page h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .error-page p {
+    margin-bottom: 20px;
+  }
+  
+  .error-page a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  

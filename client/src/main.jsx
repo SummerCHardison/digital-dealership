@@ -8,11 +8,13 @@ import BookingPage from './pages/BookingPage/BookingPage';
 import CarPage from './pages/CarPage/CarPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
+import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
