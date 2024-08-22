@@ -39,7 +39,3 @@ const typeDefs = gql`
     addBooking(carId: ID!, userId: ID!, startDate: String!, endDate: String!): Booking
     register(username: String!, email: String!, password: String!): User
     login(email: String!, password: String!): User
-  }
-`;
-
-module.exports = typeDefs;
