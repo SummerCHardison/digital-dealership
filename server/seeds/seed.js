@@ -8,10 +8,10 @@ const categoryData = require('./categoryData.json');
 const orderData = require('./orderData.json');
 
 db.once('open', async () => {
-  await cleanDB('user', 'users');
-  await cleanDB('car', 'cars');
-  await cleanDB('category', 'categories');
-  await cleanDB('order', 'orders');
+  await cleanDB('User', 'users');
+  await cleanDB('Car', 'cars');
+  await cleanDB('Category', 'categories');
+  await cleanDB('Order', 'orders');
 
   const users = await User.insertMany(userData);
   console.log('Users seeded!');
