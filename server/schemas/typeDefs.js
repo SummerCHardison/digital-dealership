@@ -2,43 +2,49 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Car {
+  type car {
     id: ID!
-    name: String!
     model: String!
     year: Int!
-    availability: Boolean!
+    availabilityEnd: Date!
+    availabilityStart: Date!
     pricePerDay: Float!
+    category: category
   }
 
-  type Booking {
-    id: ID!
-    car: Car!
-    user: User!
-    startDate: String!
-    endDate: String!
-    totalCost: Float!
+  type category {
+  id: ID!  
+  name: String!
   }
 
-  type User {
+  type order {
     id: ID!
-    username: String!
+    startRental: Date!
+    endRental: Date!
+    cars: [car]
+    totalPrice: Float!
+    user: user
+  }
+
+  type user {
+    id: ID!
+    name: String!
     email: String!
-    token: String
+    password: String!
   }
 
   type Query {
     cars: [Car]
-    bookings: [Booking]
-    booking(id: ID!): Booking
+    orders: [order]
+    order(id: ID!): order
     user(id: ID!): User
   }
 
   type Mutation {
-    addCar(name: String!, model: String!, year: Int!, availability: Boolean!, pricePerDay: Float!): Car
-    addBooking(carId: ID!, userId: ID!, startDate: String!, endDate: String!): Booking
-    register(username: String!, email: String!, password: String!): User
-    login(email: String!, password: String!): User
+    addCar(model: String!, year: Int!, availabilityEnd: Date!, availabilityStart: Date!, pricePerDay: Float!, category: category): car
+    addOrder(startRental: Date!, endRental: Date!, cars: [car], totalPrice: Float!, user: user): order
+    register(username: String!, email: String!, password: String!): auth
+    login(email: String!, password: String!): auth
 }
 `;
 
