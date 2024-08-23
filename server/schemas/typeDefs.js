@@ -6,8 +6,6 @@ const typeDefs = gql`
     id: ID!
     model: String!
     year: Int!
-    availabilityEnd: Date!
-    availabilityStart: Date!
     pricePerDay: Float!
     category: category
   }
@@ -19,8 +17,6 @@ const typeDefs = gql`
 
   type order {
     id: ID!
-    startRental: Date!
-    endRental: Date!
     cars: [car]
     totalPrice: Float!
     user: user
@@ -41,8 +37,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addCar(model: String!, year: Int!, availabilityEnd: Date!, availabilityStart: Date!, pricePerDay: Float!, category: category): car
-    addOrder(startRental: Date!, endRental: Date!, cars: [car], totalPrice: Float!, user: user): order
+    addCar(model: String!, year: Int!, pricePerDay: Float!, category: category): car
+    addOrder(cars: [car], totalPrice: Float!, user: user): order
     register(username: String!, email: String!, password: String!): auth
     login(email: String!, password: String!): auth
 }
