@@ -7,7 +7,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    products: async (parent, { category, name }) => {
+    cars: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
@@ -20,10 +20,10 @@ const resolvers = {
         };
       }
 
-      return await Product.find(params).populate('category');
+      return await Car.find(params).populate('category');
     },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');
+    car: async (parent, { _id }) => {
+      return await Car.findById(_id).populate('category');
     },
     user: async (parent, args, context) => {
       if (context.user) {
@@ -42,7 +42,7 @@ const resolvers = {
     order: async (parent, { _id }, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
-          path: 'orders.products',
+          path: 'orders.cars',
           populate: 'category'
         });
 
@@ -53,23 +53,23 @@ const resolvers = {
     },
     checkout: async (parent, args, context) => {
       const url = new URL(context.headers.referer).origin;
-      await Order.create({ products: args.products.map(({ _id }) => _id) });
+      await Order.create({ cars: args.cars.map(({ _id }) => _id) });
       const line_items = [];
 
       // eslint-disable-next-line no-restricted-syntax
-      for (const product of args.products) {
+      for (const car of args.cars) {
         // Create a line item for each product
         line_items.push({
           price_data: {
             currency: 'usd',
-            product_data: {
-              name: product.name,
-              description: product.description,
-              images: [`${url}/images/${product.image}`]
+            car_data: {
+              model: car.model,
+              year: car.year,
+              images: [`${car.image}`]
             },
-            unit_amount: product.price * 100,
+            unit_amount: car.pricePerDay * 100,
           },
-          quantity: product.purchaseQuantity,
+          quantity: car.purchaseQuantity,
         });
       }
 
@@ -91,9 +91,9 @@ const resolvers = {
 
       return { token, user };
     },
-    addOrder: async (parent, { products }, context) => {
+    addOrder: async (parent, { cars }, context) => {
       if (context.user) {
-        const order = new Order({ products });
+        const order = new Order({ cars });
 
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
 
@@ -109,10 +109,10 @@ const resolvers = {
 
       throw AuthenticationError;
     },
-    updateProduct: async (parent, { _id, quantity }) => {
+    updateCar: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
-      return await Product.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
+      return await Car.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
