@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from './pages/ProfilePage/ProfilePage';
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
