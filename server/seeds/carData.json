@@ -3,21 +3,18 @@
         "model": "Toyota Camry",
         "year": 2018,
         "pricePerDay": 30,
-        "image": "https://images.app.goo.gl/jBgcWusNu5YZhqiq5",
-        "category": "66cca39895bc1ab0de3fc1b8"
+        "image": "https://images.app.goo.gl/jBgcWusNu5YZhqiq5"
     },
     {
         "model": "pagani",
         "year": 2010,
         "pricePerDay": 1000,
-        "image": "https://images.app.goo.gl/jziLJiMHVS7e5AtH8",
-        "category": "66cca39895bc1ab0de3fc1ba"
+        "image": "https://images.app.goo.gl/jziLJiMHVS7e5AtH8"
     },
     {
         "model": "Mazda Miata",
         "year": 1992,
         "pricePerDay": 25,
-        "image": "https://images.app.goo.gl/GXQW3DPsnQxvGCSH9",
-        "category": "66cca39895bc1ab0de3fc1b9"
+        "image": "https://images.app.goo.gl/GXQW3DPsnQxvGCSH9"
     }
 ]
