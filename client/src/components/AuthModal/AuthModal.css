@@ -1,0 +1,74 @@
+/* Center the modal content */
+.ReactModal__Content {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 90%;
+    height: auto;
+    min-height: fit-content;
+    margin: 0 auto;
+  }
+  
+  /* Style the modal header */
+  .ReactModal__Content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Style the form elements */
+  .ReactModal__Content form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .ReactModal__Content form div {
+    margin-bottom: 15px;
+  }
+  
+  .ReactModal__Content form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .ReactModal__Content form input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .ReactModal__Content form button[type="submit"] {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .ReactModal__Content form button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style the close button */
+  .ReactModal__Content button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .ReactModal__Content button:hover {
+    background-color: #5a6268;
+  }

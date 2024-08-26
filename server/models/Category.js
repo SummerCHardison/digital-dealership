@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 
 const categorySchema = new Schema({
@@ -10,6 +9,6 @@ const categorySchema = new Schema({
   }
 });
 
-const Category = mongoose.model('category', categorySchema);
+const Category = mongoose.model('Category', categorySchema); // Capitalized model name
 
 module.exports = Category;

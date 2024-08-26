@@ -9,12 +9,11 @@ const carSchema = new Schema({
   },
   year: {
     type: Number,
-    required: true,
-    trim: true
+    required: true
   },
   availabilityEnd: {
     type: Date,
-    default: () => Date.now () + 3*24*60*60*1000
+    default: () => Date.now() + 3 * 24 * 60 * 60 * 1000 // 3 days from now
   },
   availabilityStart: {
     type: Date,
@@ -26,11 +25,13 @@ const carSchema = new Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: 'category'
+    ref: 'Category' // Ensure this matches the name of the referenced model
   },
-  image: String
+  image: {
+    type: String,
+    trim: true
+  }
 });
 
-
-const Car = mongoose.model('car', carSchema);
+const Car = mongoose.model('Car', carSchema); // Ensure the model name is capitalized
 module.exports = Car;

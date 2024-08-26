@@ -9,6 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 import Navigation from "./components/Navigation/Navigation";
+// import AuthModal from "./components/AuthModal/AuthModal";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -33,6 +34,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Navigation />
+      {/* <AuthModal /> */}
       <Outlet />
     </ApolloProvider>
   );
