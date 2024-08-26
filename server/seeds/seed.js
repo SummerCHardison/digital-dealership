@@ -15,12 +15,19 @@ db.once('open', async () => {
 
   const users = await User.insertMany(userData);
   console.log('Users seeded!');
-
-  const cars = await Car.insertMany(carData);
-  console.log('Cars seeded!');
-
+  
   const categories = await Category.insertMany(categoryData);
   console.log('Categories seeded!');
+  
+  const newCarData = carData.map(car => {
+    const randNum = Math.floor(Math.random() * categories.length);
+    car.category = categories[randNum]._id
+    return car;
+  });
+  
+  const cars = await Car.insertMany(newCarData);
+  console.log('Cars seeded!');
+  console.log(cars)
 
   const orders = await Order.insertMany(orderData);
   console.log('Orders seeded!');
