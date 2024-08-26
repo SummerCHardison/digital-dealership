@@ -18,16 +18,20 @@ db.once('open', async () => {
   
   const categories = await Category.insertMany(categoryData);
   console.log('Categories seeded!');
-  
+
   const newCarData = carData.map(car => {
-    const randNum = Math.floor(Math.random() * categories.length);
-    car.category = categories[randNum]._id
+    if (car.model === "Toyota Camry") {
+      car.category = categories.filter(category => category.name === "sedan")[0]._id
+    } else if (car.model === "pagani") {
+      car.category = categories.filter(category => category.name === "luxury")[0]._id
+    } else if (car.model === "Mazda Miata") {
+      car.category = categories.filter(category => category.name === "coup")[0]._id
+    }
     return car;
   });
   
   const cars = await Car.insertMany(newCarData);
   console.log('Cars seeded!');
-  console.log(cars)
 
   const orders = await Order.insertMany(orderData);
   console.log('Orders seeded!');
