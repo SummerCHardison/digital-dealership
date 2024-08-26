@@ -1,24 +1,40 @@
+const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
-const authMiddleware = ({ req }) => {
-  // Extract token from the authorization header
-  let token = req.headers.authorization || '';
+const secret = 'mysecretssshhhhhhh';
+const expiration = '2h';
 
-  // Remove 'Bearer ' prefix if it exists
-  if (token.startsWith('Bearer ')) {
-    token = token.slice(7, token.length).trimLeft();
-  }
+module.exports = {
+  AuthenticationError: new GraphQLError('Could not authenticate user.', {
+    extensions: {
+      code: 'UNAUTHENTICATED',
+    },
+  }),
+  authMiddleware: function ({ req }) {
+    // allows token to be sent via req.body, req.query, or headers
+    let token = req.body.token || req.query.token || req.headers.authorization;
 
-  if (token) {
-    try {
-      const { data } = jwt.verify(token, process.env.SECRET, { maxAge: '2h' });
-      req.user = data;
-    } catch (error) {
-      console.log('Invalid token:', error.message);
+    // ["Bearer", "<tokenvalue>"]
+    if (req.headers.authorization) {
+      token = token.split(' ').pop().trim();
     }
-  }
 
-  return req;
+    if (!token) {
+      return req;
+    }
+
+    try {
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      req.user = data;
+    } catch {
+      console.log('Invalid token');
+    }
+
+    return req;
+  },
+  signToken: function ({ firstName, email, _id }) {
+    const payload = { firstName, email, _id };
+
+    return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
+  },
 };
-
-module.exports = authMiddleware;
